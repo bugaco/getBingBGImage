@@ -48,18 +48,18 @@ try:
             print about_item #相关内容
         
         # filePath = '%s%s-%s-%s_%s.jpg' % (FILE_PATH, year, month, day, about_item)
-        filePath = '%snew.jpg' % (FILE_PATH)
+        filePath = '%s%s.jpg' % (FILE_PATH, about_item)
         print 'save_path:' + filePath
         f = open(filePath, 'wb')
         f.write(data)
         f.close()
 
-        #把最新的图片在别处也保存一份
-        # filePath2 = '%s%s-%s-%s_%s.jpg' % (ARCHIVE_FILE_PATH, year, month, day, about_item)
-        # print 'save_path2:' + filePath2
-        # f = open(filePath2, 'wb')
-        # f.write(data)
-        # f.close()
+        #把最新的图片另存一份
+        archiveFilePath = '%s%s-%s-%s_%s.jpg' % (ARCHIVE_FILE_PATH, year, month, day, about_item)
+        print 'save_path2:' + archiveFilePath
+        f = open(archiveFilePath, 'wb')
+        f.write(data)
+        f.close()
 except urllib2.URLError, e:
     if hasattr(e, "code"):
         print e.code
